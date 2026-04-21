@@ -6,6 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Registro</title>
+    
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
     <!-- Ícono de la pestaña del navegador (favicon) -->
     <link rel="icon" href="imagenes/iconos o logo/hackerman.ico">
     <!-- Hojas de estilo CSS -->
@@ -22,10 +28,10 @@
         <form id="registroForm" class="formulario-contenedor">
             <h3 class="formulario-titulo">Registro de Usuario</h3>
 
-            <input type="text" id="nombre" class="formulario-campo" placeholder="Nombre completo">
-            <input type="email" id="correo" class="formulario-campo" placeholder="Correo electrónico">
-            <input type="text" id="direccion" class="formulario-campo" placeholder="Dirección">
-            <input type="password" id="password" class="formulario-campo" placeholder="Contraseña">
+            <input type="text" id="nombre" class="formulario-campo" placeholder="Nombre completo" aria-label="Nombre completo" required>
+            <input type="email" id="correo" class="formulario-campo" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
+            <input type="text" id="direccion" class="formulario-campo" placeholder="Dirección" aria-label="Dirección" required>
+            <input type="password" id="password" class="formulario-campo" placeholder="Contraseña" aria-label="Contraseña" required>
 
             <button type="submit" class="formulario-boton">Registrarse</button>
 

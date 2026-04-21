@@ -1,494 +1,535 @@
-/* ================================
-   ESTILOS GENERALES DEL DOCUMENTO
-   ================================ */
+/* ==========================================================================
+   VARIABLES GLOBALES (PALETA CYBERPUNK)
+   ========================================================================== */
+:root {
+    --bg-dark: #0a0a10;
+    --bg-darker: #050508;
+    --bg-card: rgba(20, 20, 30, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    --neon-cyan: #00f3ff;
+    --neon-magenta: #ff003c;
+    
+    --text-main: #e0e0e0;
+    --text-muted: #8c8c9e;
 
-/* Reseteo básico: quita márgenes y rellenos por defecto del navegador */
+    /* Fonts */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ==========================================================================
+   RESET BÁSICO
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Hace que padding y border se incluyan en el ancho total */
 }
 
-/* Estilos del cuerpo de la página */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* Fuente principal */
-    background-color: #1a1a1a;
-    /* Fondo negro oscuro */
-    color: #f0f0f0;
-    /* Texto blanco claro */
+    background-color: var(--bg-darker);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(255, 0, 60, 0.05), transparent 25%);
+    color: var(--text-main);
+    font-family: var(--font-body);
     line-height: 1.6;
-    /* Espacio entre líneas para mejor lectura */
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* ================================
-   ENCABEZADO (HEADER)
-   ================================ */
+/* Efecto de difuminado oscuro en movimiento con hackerman.ico */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%; 
+    left: -50%;
+    width: 200%; 
+    height: 200%;
+    background-image: url('../imagenes/iconos o logo/hackerman.ico');
+    background-size: 250px;
+    background-repeat: repeat;
+    /* Mayor visibilidad */
+    opacity: 0.15;
+    z-index: -1;
+    pointer-events: none;
+    /* Difuminado mucho más ligero, mayor brillo */
+    filter: blur(0px) contrast(1.2) brightness(0.7);
+    animation: hackermanMove 30s linear infinite;
+}
 
+@keyframes hackermanMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(10%, 10%); }
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA Y ELEMENTOS COMUNES
+   ========================================================================== */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+/* ==========================================================================
+   HEADER Y NAVEGACIÓN (GLASSMORPHISM)
+   ========================================================================== */
 header {
-    background-color: #0d0d0d;
-    /* Negro más oscuro que el fondo */
-    padding: 15px 30px;
-    /* Espacio interno: arriba/abajo 15px, lados 30px */
-    display: flex;
-    /* Flexbox para alinear logo y menú en fila */
-    justify-content: space-between;
-    /* Logo a la izquierda, menú a la derecha */
-    align-items: center;
-    /* Centrado vertical */
-    border-bottom: 3px solid #ff6600;
-    /* Línea naranja abajo del header */
-    position: sticky;
-    /* Se queda fijo al hacer scroll */
+    position: fixed;
     top: 0;
-    z-index: 100;
-    /* Se muestra sobre el resto del contenido */
+    width: 100%;
+    height: 80px;
+    background: rgba(10, 10, 16, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 1000;
 }
 
-/* Logo: ícono + texto */
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    /* Espacio entre el ícono y el texto */
 }
 
 .logo-icon {
-    font-size: 28px;
-    /* Tamaño del emoji */
+    font-size: 2rem;
+    filter: drop-shadow(0 0 5px var(--neon-magenta));
 }
 
 .logo-texto {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff6600;
-    /* Naranja Rockstar */
-    letter-spacing: 2px;
-    /* Espacio entre letras */
-    text-transform: uppercase;
-    /* Todo en mayúsculas */
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-cyan);
 }
-
-/* ================================
-   NAVEGACIÓN (NAV)
-   ================================ */
 
 nav ul {
     list-style: none;
-    /* Quita las viñetas de la lista */
     display: flex;
-    /* Los elementos se colocan en fila horizontal */
-    gap: 25px;
-    /* Espacio entre cada enlace */
+    gap: 2rem;
+    align-items: center;
 }
 
-nav ul li a {
-    text-decoration: none;
-    /* Quita el subrayado de los enlaces */
-    color: #f0f0f0;
-    /* Color del texto */
-    font-size: 16px;
-    font-weight: bold;
+nav a {
+    font-weight: 600;
+    font-size: 1rem;
     text-transform: uppercase;
-    /* Mayúsculas */
-    padding: 8px 15px;
-    /* Espacio interno del enlace */
-    border-radius: 5px;
-    /* Bordes redondeados */
-    transition: background-color 0.3s, color 0.3s;
-    /* Transición suave al pasar el mouse */
+    position: relative;
+    padding: 5px 0;
 }
 
-/* Efecto hover: cuando el mouse pasa sobre un enlace */
-nav ul li a:hover {
-    background-color: #ff6600;
-    /* Fondo naranja */
-    color: #0d0d0d;
-    /* Texto negro */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--neon-cyan);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 8px var(--neon-cyan);
 }
 
-/* Botón de Registro en la navegación */
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+}
+
 .boton-registro {
-    background-color: #ff6600;
-    /* Fondo naranja para destacar */
-    color: #0d0d0d !important;
-    /* Texto negro */
-    border-radius: 5px;
-    font-weight: bold;
+    background: transparent;
+    border: 2px solid var(--neon-magenta);
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: var(--neon-magenta);
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.2);
+}
+
+.boton-registro::after {
+    display: none;
 }
 
 .boton-registro:hover {
-    background-color: #ff8533;
-    /* Naranja más claro al pasar mouse */
+    background: var(--neon-magenta);
+    color: #fff;
+    box-shadow: 0 0 15px var(--neon-magenta), inset 0 0 10px rgba(255,255,255,0.5);
+    text-shadow: none;
 }
 
-/* ================================
-   BANNER PRINCIPAL (HERO)
-   ================================ */
-
+/* ==========================================================================
+   BANNER DE INICIO (HERO)
+   ========================================================================== */
 .banner {
-    background-color: #ff6600;
-    /* Fondo naranja Rockstar */
-    color: #0d0d0d;
-    /* Texto negro para contraste */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    /* Texto centrado */
-    padding: 80px 20px;
-    /* Espacio interno grande para que destaque */
+    padding: 0 20px;
+    background: radial-gradient(circle at center, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0,243,255,0.1) 0%, transparent 70%);
+    z-index: 0;
 }
 
 .banner h1 {
-    font-size: 42px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 20px;
+    z-index: 1;
+    text-shadow: 2px 2px 0px var(--neon-magenta),
+                 -2px -2px 0px var(--neon-cyan),
+                 0 0 20px rgba(255,255,255,0.3);
 }
 
 .banner p {
-    font-size: 18px;
+    font-size: 1.2rem;
+    color: var(--text-muted);
     max-width: 600px;
-    /* Ancho máximo del párrafo */
-    margin: 0 auto;
-    /* Centrado horizontal */
+    z-index: 1;
 }
 
-/* ================================
-   SECCIÓN DE TRUCOS
-   ================================ */
-
+/* ==========================================================================
+   SECCIÓN: TRUCOS
+   ========================================================================== */
 .trucos {
-    padding: 60px 30px;
-    /* Espacio interno de la sección */
+    padding: 100px 5%;
 }
 
-.trucos h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #ff6600;
-    /* Naranja */
-    margin-bottom: 40px;
-    text-transform: uppercase;
-}
-
-/* Grid: organiza las tarjetas en columnas */
 .trucos-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 columnas de igual tamaño */
-    gap: 25px;
-    /* Espacio entre tarjetas */
-    max-width: 900px;
-    /* Ancho máximo de la cuadrícula */
-    margin: 0 auto;
-    /* Centrado horizontal */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
-/* Cada tarjeta de truco */
 .tarjeta-truco {
-    background-color: #252525;
-    /* Fondo gris oscuro */
-    border: 2px solid #333;
-    /* Borde gris */
-    border-radius: 10px;
-    /* Bordes redondeados */
-    padding: 25px;
-    transition: border-color 0.3s, transform 0.3s;
-    /* Transición suave */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(5px);
 }
 
-/* Efecto hover en la tarjeta */
+.tarjeta-truco::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+
+.tarjeta-truco:nth-child(even)::before {
+    background: var(--neon-magenta);
+    box-shadow: 0 0 10px var(--neon-magenta);
+}
+
 .tarjeta-truco:hover {
-    border-color: #ff6600;
-    /* Borde naranja al pasar mouse */
     transform: translateY(-5px);
-    /* Se eleva un poco */
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.tarjeta-truco:hover::before {
+    width: 100%;
+    opacity: 0.05;
 }
 
 .tarjeta-truco h3 {
-    color: #ff6600;
-    /* Título naranja */
-    font-size: 22px;
+    font-size: 1.5rem;
     margin-bottom: 5px;
+    color: #fff;
+    position: relative;
+    z-index: 1;
 }
 
-/* Etiqueta de plataforma */
-.plataforma {
-    color: #888;
-    /* Gris claro */
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #333;
-    /* Línea separadora */
-    padding-bottom: 10px;
+.tarjeta-truco .plataforma {
+    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
 
-/* Lista de trucos dentro de cada tarjeta */
+.tarjeta-truco:nth-child(even) .plataforma {
+    color: var(--neon-magenta);
+}
+
 .lista-trucos {
     list-style: none;
-    /* Sin viñetas */
+    position: relative;
+    z-index: 1;
 }
 
 .lista-trucos li {
-    padding: 6px 0;
-    font-size: 14px;
-    border-bottom: 1px solid #2a2a2a;
-    /* Línea sutil entre cada truco */
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .lista-trucos li:last-child {
     border-bottom: none;
-    /* Quita la línea del último elemento */
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-.lista-trucos li strong {
-    color: #ff8533;
-    /* Naranja claro para el nombre del truco */
+.lista-trucos strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
 }
 
-/* ================================
-   SECCIÓN SOBRE MÍ
-   ================================ */
-
+/* ==========================================================================
+   SECCIÓN: SOBRE MÍ
+   ========================================================================== */
 .sobre-mi {
-    padding: 60px 30px;
-    background-color: #222;
-    /* Fondo ligeramente diferente para separar secciones */
+    padding: 100px 5%;
+    background-color: var(--bg-dark);
+    position: relative;
 }
 
-.sobre-mi h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #ff6600;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+.sobre-mi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
 }
 
 .sobre-mi-contenido {
-    max-width: 900px;
-    /* Un poco más ancho para dar espacio a la imagen */
-    margin: 0 auto;
-    /* Centrado */
     display: flex;
-    /* Texto e imagen lado a lado */
     align-items: center;
-    /* Centrado vertical */
-    gap: 40px;
-    /* Espacio entre texto e imagen */
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Texto ocupa el espacio disponible */
 .sobre-mi-texto {
     flex: 1;
-    /* Ocupa todo el espacio restante */
 }
 
 .sobre-mi-texto p {
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #ccc;
-    /* Gris claro para el texto */
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
-/* Imagen a la derecha */
+.sobre-mi-texto strong {
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
 .sobre-mi-imagen {
-    flex-shrink: 0;
-    /* No se achica */
-    width: 250px;
-    /* Ancho fijo de la imagen */
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .sobre-mi-imagen img {
-    width: 100%;
-    /* Ocupa todo el contenedor */
-    border-radius: 10px;
-    /* Bordes redondeados */
-    border: 3px solid #ff6600;
-    /* Borde naranja */
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+    /* Neon glow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sobre-mi-contenido strong {
-    color: #ff6600;
-    /* Palabras destacadas en naranja */
+.sobre-mi-imagen img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5), 0 0 10px rgba(255, 0, 60, 0.3);
+    border-color: var(--neon-cyan);
 }
 
-/* ================================
-   SECCIÓN REDES SOCIALES
-   ================================ */
-
+/* ==========================================================================
+   SECCIÓN: REDES SOCIALES
+   ========================================================================== */
 .redes {
-    padding: 60px 30px;
-}
-
-.redes h2 {
+    padding: 100px 5%;
     text-align: center;
-    font-size: 32px;
-    color: #ff6600;
-    margin-bottom: 10px;
-    text-transform: uppercase;
 }
 
 .redes-descripcion {
-    text-align: center;
-    color: #999;
-    font-size: 16px;
+    color: var(--neon-magenta);
     margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
-/* Grid para las tarjetas de redes */
 .redes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 columnas */
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-/* Cada tarjeta de red social */
 .red-tarjeta {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 8px;
+    width: 250px;
     display: flex;
     flex-direction: column;
-    /* Contenido en columna vertical */
     align-items: center;
-    text-align: center;
-    background-color: #252525;
-    border: 2px solid #333;
-    border-radius: 10px;
-    padding: 25px 15px;
-    text-decoration: none;
-    /* Sin subrayado porque es un enlace */
-    color: #f0f0f0;
-    transition: border-color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.red-tarjeta:hover {
+.red-tarjeta.instagram:hover {
+    border-color: #E1306C;
+    box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
     transform: translateY(-5px);
 }
 
-/* Colores específicos para cada red social al hacer hover */
-.youtube:hover {
-    border-color: #ff0000;
-    /* Rojo YouTube */
+.red-tarjeta.discord:hover {
+    border-color: #5865F2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.5);
+    transform: translateY(-5px);
 }
 
-.instagram:hover {
-    border-color: #e1306c;
-    /* Rosa Instagram */
-}
-
-.tiktok:hover {
-    border-color: #00f2ea;
-    /* Celeste TikTok */
-}
-
-.discord:hover {
-    border-color: #5865f2;
-    /* Morado Discord */
-}
-
-.twitter:hover {
-    border-color: #1da1f2;
-    /* Azul Twitter */
-}
-
-.twitch:hover {
-    border-color: #9146ff;
-    /* Morado Twitch */
-}
-
-/* Ícono grande de cada red */
 .red-icono {
-    font-size: 36px;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.red-nombre {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.red-usuario {
+    font-size: 0.9rem;
+    color: var(--text-muted);
     margin-bottom: 10px;
 }
 
-/* Nombre de la red */
-.red-nombre {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ff6600;
-}
-
-/* Nombre de usuario */
-.red-usuario {
-    font-size: 14px;
-    color: #aaa;
-    margin-top: 5px;
-}
-
-/* Descripción de la red */
 .red-detalle {
-    font-size: 12px;
-    color: #666;
-    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* ================================
+/* ==========================================================================
    PIE DE PÁGINA (FOOTER)
-   ================================ */
-
+   ========================================================================== */
 footer {
-    background-color: #0d0d0d;
-    /* Mismo color que el header */
+    background-color: #030305;
+    padding: 40px 20px;
     text-align: center;
-    padding: 25px;
-    border-top: 3px solid #ff6600;
-    /* Línea naranja arriba del footer */
-    color: #777;
-    /* Texto gris */
-    font-size: 14px;
+    border-top: 1px solid rgba(255, 0, 60, 0.3);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--neon-magenta);
+    box-shadow: 0 0 10px var(--neon-magenta);
 }
 
 footer p {
-    margin: 5px 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
 }
 
-/* ================================
-   DISEÑO RESPONSIVO (MOBILE)
-   Si la pantalla es menor a 768px, se ajusta
-   ================================ */
-
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
 @media (max-width: 768px) {
-
-    /* El header se apila en columna */
-    header {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    /* El menú también se apila */
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    /* Banner más pequeño */
     .banner h1 {
-        font-size: 28px;
+        font-size: 2.5rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 0.9rem;
     }
 
-    /* Trucos en 1 sola columna */
-    .trucos-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Redes en 2 columnas */
-    .redes-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Sobre mí: imagen debajo del texto en móvil */
     .sobre-mi-contenido {
         flex-direction: column;
         text-align: center;
     }
-
-    .sobre-mi-imagen {
-        width: 200px;
-        /* Más pequeña en móvil */
+    
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    body {
+        padding-top: 150px;
     }
 }
