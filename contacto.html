@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - GameCodes</title>
+    
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícono de la pestaña del navegador (favicon) -->
+    <link rel="icon" href="imagenes/iconos o logo/hackerman.ico">
+    <!-- Hojas de estilo CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+
+<body>
+
+    <!-- ============ CONTENIDO DEL FORMULARIO DE CONTACTO ============ -->
+    <div class="pagina-registro">
+
+        <!-- Formulario de contacto -->
+        <!-- El ID "contactoForm" se usa en JavaScript para capturar el evento submit -->
+        <form id="contactoForm" class="formulario-contenedor">
+            <h3 class="formulario-titulo">Formulario de Contacto</h3>
+
+            <!-- Campo: Nombre -->
+            <input type="text" id="nombreContacto" class="formulario-campo" placeholder="Nombre" aria-label="Nombre" required>
+            <!-- Campo: Asunto -->
+            <input type="text" id="asuntoContacto" class="formulario-campo" placeholder="Asunto" aria-label="Asunto" required>
+            <!-- Campo: Mensaje (textarea con contador de caracteres) -->
+            <textarea id="mensajeContacto" class="formulario-campo formulario-textarea" placeholder="Escribe tu mensaje..." aria-label="Mensaje" required></textarea>
+            <!-- Contador de caracteres: se actualiza dinámicamente con JavaScript -->
+            <p id="contadorCaracteres" class="formulario-contador">0 caracteres</p>
+
+            <button type="submit" class="formulario-boton">Enviar Mensaje</button>
+
+            <!-- Contenedor donde se muestran los errores o éxito dinámicamente en pantalla -->
+            <p id="mensajeContactoResult" class="formulario-mensaje"></p>
+
+            <!-- Enlace para volver a la página principal -->
+            <div class="formulario-enlace-volver">
+                <a href="index.html">← Volver al inicio</a>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Script de JavaScript para la validación del contacto -->
+    <script src="js/contacto.js"></script>
+
+</body>
+
+</html>

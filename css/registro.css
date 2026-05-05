@@ -139,6 +139,22 @@
     text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
 }
 
+/* Textarea para el formulario de contacto */
+.formulario-textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Contador de caracteres */
+.formulario-contador {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
 /* Enlace para volver al inicio */
 .formulario-enlace-volver {
     margin-top: 20px;

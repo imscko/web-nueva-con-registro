@@ -5,7 +5,7 @@
     <!-- Metadatos del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Registro</title>
+    <title>Registro - GameCodes</title>
     
     <!-- Google Fonts: Orbitron & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,17 +25,23 @@
     <div class="pagina-registro">
 
         <!-- Formulario de registro -->
+        <!-- El ID "registroForm" se usa en JavaScript para capturar el evento submit -->
         <form id="registroForm" class="formulario-contenedor">
             <h3 class="formulario-titulo">Registro de Usuario</h3>
 
-            <input type="text" id="nombre" class="formulario-campo" placeholder="Nombre completo" aria-label="Nombre completo" required>
-            <input type="email" id="correo" class="formulario-campo" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
-            <input type="text" id="direccion" class="formulario-campo" placeholder="Dirección" aria-label="Dirección" required>
-            <input type="password" id="password" class="formulario-campo" placeholder="Contraseña" aria-label="Contraseña" required>
+            <!-- Campo: Usuario -->
+            <input type="text" id="usuario" class="formulario-campo" placeholder="Usuario" aria-label="Usuario" required>
+            <!-- Campo: Email -->
+            <input type="email" id="correoRegistro" class="formulario-campo" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
+            <!-- Campo: Contraseña -->
+            <input type="password" id="passwordRegistro" class="formulario-campo" placeholder="Contraseña" aria-label="Contraseña" required>
+            <!-- Campo: Confirmación de Contraseña -->
+            <input type="password" id="confirmarPassword" class="formulario-campo" placeholder="Confirmar contraseña" aria-label="Confirmar contraseña" required>
 
             <button type="submit" class="formulario-boton">Registrarse</button>
 
-            <p id="mensaje" class="formulario-mensaje"></p>
+            <!-- Contenedor donde se muestran los errores dinámicamente en pantalla -->
+            <p id="mensajeRegistro" class="formulario-mensaje"></p>
 
             <!-- Enlace para volver a la página principal -->
             <div class="formulario-enlace-volver">
@@ -45,8 +51,8 @@
 
     </div>
 
-    <!-- Script de JavaScript -->
-    <script src="js/app.js"></script>
+    <!-- Script de JavaScript para la validación del registro -->
+    <script src="js/registro.js"></script>
 
 </body>
 
