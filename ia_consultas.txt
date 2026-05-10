@@ -1,0 +1,99 @@
+===============================================================
+ ARCHIVO: ia_consultas.txt
+ Documentación de prompts usados con herramientas de IA
+ Proyecto: GameCodes - Landing Page Interactiva (Evaluación 2)
+===============================================================
+
+Este archivo documenta los prompts (consultas) realizados a
+herramientas de Inteligencia Artificial durante el desarrollo
+del proyecto, específicamente para las validaciones de
+formularios y el carrusel de imágenes.
+
+===============================================================
+ 1. CARRUSEL DE IMÁGENES
+===============================================================
+
+Prompt 1.1 - Creación del carrusel con JavaScript puro:
+"Necesito implementar un carrusel de imágenes usando JavaScript
+puro (sin librerías externas como jQuery o Slick). El carrusel
+debe tener botones 'Anterior' y 'Siguiente' que modifiquen el
+DOM dinámicamente cambiando clases CSS de los slides. Debe usar
+funciones modulares como cambiarImagen(), irAnterior(),
+irSiguiente() y actualizarIndicador(). También necesito un
+autoplay que cambie la imagen automáticamente cada 4 segundos."
+
+Prompt 1.2 - Explicación de la manipulación del DOM:
+"Explícame cómo funciona classList.add() y classList.remove()
+para modificar nodos del DOM en un carrusel. ¿Cómo puedo usar
+opacity en CSS junto con una clase 'activo' para hacer
+transiciones suaves entre slides?"
+
+===============================================================
+ 2. VALIDACIONES DE FORMULARIOS
+===============================================================
+
+Prompt 2.1 - Validación del formulario de registro:
+"Necesito crear validaciones en JavaScript para un formulario
+de registro con los campos: usuario, email, contraseña y
+confirmar contraseña. Las validaciones deben incluir:
+- Verificar que no haya campos vacíos
+- Validar el formato del email con una expresión regular
+- Verificar que la contraseña tenga mínimo 8 caracteres
+- Verificar que ambas contraseñas coincidan
+Quiero que el código use event.preventDefault() y que las
+validaciones estén organizadas en funciones modulares como
+validarCamposVacios(), validarEmail() y validarPassword()."
+
+Prompt 2.2 - Expresión regular para email:
+"¿Cuál es una buena expresión regular (regex) para validar
+correos electrónicos en JavaScript? Necesito que valide el
+formato algo@algo.algo y que rechace espacios y caracteres
+inválidos. Explícame cada parte del regex."
+
+Prompt 2.3 - Seguridad en formularios:
+"¿Cuáles son las buenas prácticas de seguridad para validar
+formularios HTML con JavaScript? Necesito recomendaciones para
+evitar campos vacíos, asegurar formatos de correo correctos y
+manejar contraseñas de forma segura en el frontend."
+
+Prompt 2.4 - Almacenamiento con localStorage:
+"¿Cómo puedo usar localStorage para guardar un arreglo (array)
+de usuarios registrados? Necesito que cada usuario sea un
+objeto con nombre, correo y password, y que al registrar uno
+nuevo se agregue al arreglo existente sin sobrescribir los
+anteriores. Muéstrame cómo usar JSON.stringify() y JSON.parse()
+para esto."
+
+Prompt 2.5 - Validación del formulario de login:
+"Tengo un arreglo de usuarios guardado en localStorage.
+¿Cómo puedo buscar dentro del arreglo si existe un usuario
+con un correo y contraseña específicos? Necesito una función
+buscarUsuario() que recorra el arreglo con un bucle for."
+
+Prompt 2.6 - Formulario de contacto con contador:
+"Necesito un formulario de contacto con campos Nombre, Email
+y Mensaje (textarea). El textarea debe tener un contador de
+caracteres en tiempo real que se actualice con el evento
+'input'. También necesito validación de campos vacíos y
+validación del formato de email."
+
+===============================================================
+ 3. ESTRUCTURA Y ORGANIZACIÓN DEL CÓDIGO
+===============================================================
+
+Prompt 3.1 - Organización en funciones modulares:
+"¿Cómo puedo organizar mi código JavaScript en funciones
+modulares para un proyecto web? Necesito funciones nombradas
+como validarDatos(), cambiarImagen(), actualizarDOM() en
+lugar de poner toda la lógica dentro de funciones anónimas
+de addEventListener. Dame ejemplos de cómo estructurar esto."
+
+Prompt 3.2 - Vinculación de label con input:
+"¿Cómo vinculo correctamente una etiqueta <label> con su
+<input> en HTML? Necesito usar el atributo 'for' del label
+para que coincida con el 'id' del input. ¿Por qué es
+importante hacer esto para accesibilidad?"
+
+===============================================================
+ FIN DEL ARCHIVO
+===============================================================
